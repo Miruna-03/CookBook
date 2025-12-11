@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Database</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-book"></i><b> COOKBOOK<b></h1>
+            <p class="subtitle">Browse and search through recipe collection</p>
+        </header>
+
+        
+        <div class="filters">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search recipe titles...">
+                <button onclick="searchRecipes()"><i class="fas fa-search"></i> Search</button>
+            </div>
+            
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="minRating">Min Rating:</label>
+                    <input type="range" id="minRating" min="0" max="5" step="0.1" value="0">
+                    <span id="ratingValue" style="min-width: 40px; font-weight: 600;">0+</span>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="maxCalories">Max Calories:</label>
+                    <input type="number" id="maxCalories" placeholder="e.g., 500">
+                </div>
+                
+                <div class="filter-group">
+                    <label for="maxTime">Max Time (min):</label>
+                    <input type="number" id="maxTime" placeholder="e.g., 60">
+                </div>
+                
+                <button onclick="clearFilters()" class="clear-btn">
+                    <i class="fas fa-times"></i> Clear Filters
+                </button>
+            </div>
+        </div>
+
+        
+        <div class="stats" id="stats">
+            <div class="stat-item">
+                <i class="fas fa-list"></i>
+                <span id="totalRecipes">--</span>
+                <div class="label">Total Recipes</div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-star"></i>
+                <span id="avgRating">--</span>
+                <div class="label">Avg Rating</div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-clock"></i>
+                <span id="avgTime">--</span>
+                <div class="label">Avg Time</div>
+            </div>
+        </div>
+
+        
+        <div class="table-container">
+            <table class="recipes-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Cuisine</th>
+                        <th>Rating</th>
+                        <th>Total Time</th>
+                        <th>Serves</th>
+                        <th>Calories</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="recipesTableBody">
+                    <tr class="loading-row">
+                        <td colspan="7">
+                            <i class="fas fa-spinner fa-spin"></i> Loading recipes...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
+        <div class="pagination" id="pagination">
+            <button onclick="changePage(-1)" id="prevBtn" disabled>
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <span id="pageInfo">Page 1 of 1</span>
+            <button onclick="changePage(1)" id="nextBtn">
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <footer>
+            <p>Recipe Database | Total: <span id="footerCount">--</span> recipes</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
