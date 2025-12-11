@@ -1,4 +1,5 @@
-📘 COOKBOOK
+**📘 COOKBOOK**
+
 📄 Overview
 This project loads recipe information from a JSON file and stores it in a structured SQLite database.
 It is designed to help process large recipe datasets and convert them into a clean, queryable format.
